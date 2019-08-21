@@ -1,0 +1,36 @@
+@startuml
+
+title アダプターパターン（移譲）
+
+package main {
+    object main {
+    }
+}
+
+package banner {
+
+    class banner {
+        show_with_paren(arg): void
+        show_with_aster(arg): void
+    }
+}
+
+package print {
+
+    interface print {
+        {abstract} print_weak(arg): void
+        {abstract} print_strong(arg): void
+    }
+
+    class print_banner {
+        print_weak(arg): void
+        print_strong(arg): void
+    }
+
+    print <|.. print_banner
+    print_banner *--> banner
+    main --> print
+}
+
+
+@enduml
