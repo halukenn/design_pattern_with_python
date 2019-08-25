@@ -1,0 +1,36 @@
+@startuml
+
+title アダプターパターン（継承）
+
+package main {
+    object main {
+    }
+}
+
+package print {
+
+    abstract AbstractDisplay {
+        {abstract} open(arg): void
+        {abstract} print(arg): void
+        {abstract} close(arg): void
+        display(): void
+    }
+
+    class CharDisplay {
+        open(arg): void
+        print(arg): void
+        close(arg): void
+    }
+
+    class StringDisplay {
+        open(arg): void
+        print(arg): void
+        close(arg): void
+    }
+
+    AbstractDisplay <|-- CharDisplay
+    AbstractDisplay <|-- StringDisplay
+    main --> AbstractDisplay
+}
+
+@enduml
