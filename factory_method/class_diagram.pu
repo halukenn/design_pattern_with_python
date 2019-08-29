@@ -1,0 +1,51 @@
+@startuml
+
+title ファクトリーメソッドパターン
+
+package main {
+    object main {
+    }
+}
+
+package main {
+    object main {
+    }
+}
+
+package framework {
+
+    abstract Product {
+        {abstract} use(arg): void
+    }
+
+    abstract Factory {
+        create(arg): void
+        {abstract} createProduct(arg): Product
+        {abstract} registerProduct(arg): void
+    }
+
+    main -right-> Factory
+    Factory -right-> Product
+}
+
+package idcard {
+    
+    class IDCard {
+        owner: string
+        use(arg): void
+        getOwner(arg): string
+    }
+
+    class IDCardFactory {
+        owners: list
+        createProduct(arg): Product
+        registerProduct(arg): void
+        getOwners(): list
+    }
+
+    Product <|-- IDCard
+    Factory <|-- IDCardFactory
+    IDCardFactory -right-> IDCard
+}
+
+@enduml
