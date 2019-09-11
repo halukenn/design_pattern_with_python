@@ -7,11 +7,6 @@ package main {
     }
 }
 
-package main {
-    object main {
-    }
-}
-
 package builder {
 
     class Director {
